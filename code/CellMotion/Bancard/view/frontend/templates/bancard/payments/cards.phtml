@@ -1,0 +1,97 @@
+<style>
+    #iframe-container iframe{
+        min-height: 500px;
+    }
+    #add-new-card-container{
+        display: none;
+    }
+    .account.bancard-payments-cards .actions-toolbar .primary .action.primary.add {
+        background-color: #0034a4;
+        border-color: #0034a4;
+    }
+</style>
+<div class="block block-addresses-default">
+    <div class="block-title"><strong><?= $block->escapeHtml(__('Tarjetas Registradas')) ?></strong></div>
+    <div class="block-content">
+        <?php foreach($this->getCards() as $card  ): ?>
+            <div class="box box-address-billing">
+                <strong class="box-title">
+                    <span><?= $block->escapeHtml(__('Tarjeta #')) ?></span>
+                </strong>
+                <div class="box-content">
+                    <span>Número: </span>
+                    <span><?= $card['card_masked_number'] ?></span><br>
+
+                    <span>Marca: </span>
+                    <span><?= $card['card_brand'] ?></span><br>
+
+                    <span>Vencimiento: </span>
+                    <span><?= $card['expiration_date'] ?></span><br>
+
+                    <span>Tipo: </span>
+                    <span><?= $card['card_type'] ?></span><br>
+                </div>
+                <div class="box-actions">
+                    <a class="action edit" href="#">
+                        <span><?= $block->escapeHtml(__('Editar')) ?></span>
+                    </a>
+                </div>
+            </div>
+        <?php endforeach; ?>
+    </div>
+</div>
+
+<div id="add-new-card-container">
+    <?php if($this->setNewCard()): ?>
+        <div class="block block-addresses-default">
+            <div class="block-title">
+                <strong><?= $block->escapeHtml(__('Agregar nueva tarjeta')) ?></strong>
+            </div>
+
+            <script src="https://vpos.infonet.com.py:8888/checkout/javascript/dist/bancard-checkout-3.0.0-sandbox.js"></script>
+
+            <script type="application/javascript">
+
+
+            </script>
+
+            <div style="height: 500px; width: 500px; margin: auto" id="iframe-container"></div>
+        </div>
+    <?php endif ?>
+</div>
+<div class="actions-toolbar">
+    <div class="primary">
+        <button type="button" role="add-address" title="<?= $block->escapeHtmlAttr(__('Agregar nueva tarjeta')) ?>" class="action primary add" id="btn-add-new-card"><span><?= $block->escapeHtml(__('Agregar nueva tarjeta')) ?></span></button>
+    </div>
+</div>
+<script>
+    require(["jquery"],
+    function($) {
+
+        $("#btn-add-new-card").click(function(e){
+            e.preventDefault();
+            var styles = {
+                    'input-background-color' : '#f9f9f9',
+                    'input-text-color': '#001031',
+                    'input-border-color' : '#eeeeee',
+                    'input-placeholder-color' : '#333333',
+                    'button-background-color' : '#0034a4',
+                    'button-text-color' : '#FFFFFF',
+                    'button-border-color' : '#00277c',
+                    'form-background-color' : '#f5f8ff',
+                    'form-border-color' : '#e4ecff',
+                    'form-min-height' : '500px',
+                    'header-background-color' : '#e4ecff',
+                    'header-text-color' : '#001031',
+                    'hr-border-color' : '#eeeeee'
+                };
+            options = {styles: styles};
+            Bancard.Cards.createForm('iframe-container', '<?= $this->setNewCard() ?>', options);
+
+            $("#add-new-card-container").show('slow');
+            $("#iframe-container iframe").css('height','500px');
+            document.getElementById("add-new-card-container").scrollIntoView();
+        });
+
+    });
+</script>

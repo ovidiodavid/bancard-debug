@@ -1,0 +1,18 @@
+{
+    "name": "cellmotion/module-bancard",
+    "description": "Bancard module to accept payment with credit card token.",
+    "require": {
+        "php": "~7.3.0||~7.4.0||~8.1"
+    },
+    "type": "magento2-module",
+    "license": "MIT",
+
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "CellMotion\\Bancard\\": ""
+        }
+    }
+}

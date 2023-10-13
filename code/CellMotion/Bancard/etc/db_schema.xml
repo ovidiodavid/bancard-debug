@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="cellmotion_bancard_cards" resource="default" engine="innodb" comment="Credit cards saved from bancard module.">
+        <column xsi:type="int" name="id" unsigned="true" nullable="false" identity="true" comment="Card ID"/>
+        <column xsi:type="int" name="customer_id" unsigned="true" nullable="false" comment="Customer ID"/>
+        <column xsi:type="timestamp" name="created_at" on_update="false" nullable="false" default="CURRENT_TIMESTAMP" comment="Created At"/>
+        <column xsi:type="varchar" name="card_number" nullable="false" length="20" comment="Card Number"/>
+        <column xsi:type="varchar" name="card_brand" nullable="false" length="50" comment="Card Brand"/>
+        <column xsi:type="varchar" name="card_expiration" nullable="false" length="16" comment="Card Expiration Date"/>
+        <column xsi:type="varchar" name="card_type" nullable="false" length="16" comment="Card Type"/>
+        <column xsi:type="varchar" name="card_alias" nullable="false" length="32" comment="Card Alias Name"/>
+        <column xsi:type="int" name="sort_order" nullable="false" length="2" comment="Order of sorting"/>
+        <column xsi:type="int" name="deleted" nullable="false" length="1" default="0" comment="Card has been deleted"/>
+        <column xsi:type="timestamp" name="deleted_at" on_update="false" nullable="true" comment="Deleted At"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id"/>
+        </constraint>
+    </table>
+</schema>
