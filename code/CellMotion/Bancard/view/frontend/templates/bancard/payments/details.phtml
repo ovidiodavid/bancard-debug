@@ -1,0 +1,12 @@
+<?php
+/** @var $block Magento\Framework\View\Element\Template */
+/** @var CellMotion\Bancard\ViewModel\Cards $cardVm */
+$cardVm = $block->getData('details_vm');
+$card = $cardVm->getDetail();
+?>
+<div class="block block-addresses-default">
+    <div class="block-title"><strong><?= $block->escapeHtml(__('Tarjetas Detalles')) ?></strong></div>
+    <div class="block-content">
+    <?= $card->getCardAlias() ?>
+    </div>
+</div>

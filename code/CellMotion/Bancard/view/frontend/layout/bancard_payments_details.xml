@@ -2,18 +2,18 @@
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <update handle="customer_account"/>
     <head>
-		<title>Mis Tarjetas de Crédito</title>
+		<title>Detalles</title>
 	</head>
     <body>
         <referenceBlock name="page.main.title">
             <action method="setPageTitle">
-                <argument translate="true" name="title" xsi:type="string">Mis Tarjetas</argument>
+                <argument translate="true" name="title" xsi:type="string">Detalles 2</argument>
             </action>
         </referenceBlock>
         <referenceContainer name="content">
-            <block class="CellMotion\Bancard\Block\Payments\PaymentsCards" name="bancard_payments_cards" as="cards" template="CellMotion_Bancard::bancard/payments/cards.phtml" cacheable="false">
+            <block name="bancard_payments_details" template="CellMotion_Bancard::bancard/payments/details.phtml">
                 <arguments>
-                    <argument name="cards_vm" xsi:type="object">CellMotion\Bancard\ViewModel\Cards</argument>
+                    <argument name="details_vm" xsi:type="object">CellMotion\Bancard\ViewModel\Cards</argument>
                 </arguments>
             </block>
         </referenceContainer>

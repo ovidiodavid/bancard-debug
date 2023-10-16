@@ -3,13 +3,12 @@ namespace CellMotion\Bancard\Model;
 
 use CellMotion\Bancard\Api\Data\CardsInterface;
 use Magento\Framework\Model\AbstractModel;
-use  CellMotion\Bancard\Model\ResourceModel\Cards as ResourceModelCards;
 
 class Cards extends AbstractModel implements CardsInterface
 {
    public function _construct()
    {
-    $this->_init(ResourceModelCards::class);
+      $this->_init(ResourceModel\Cards::class);
    }
 
    public function getCustomerId()
@@ -44,7 +43,7 @@ class Cards extends AbstractModel implements CardsInterface
 
    public function setCardBrand($card_brand)
    {
-      return $this->setData(self::CARD_BRAND ,$card_brand );
+      return $this->setData(self::CARD_BRAND ,$card_brand);
    }
 
    public function getCardNumber()
@@ -107,3 +106,4 @@ class Cards extends AbstractModel implements CardsInterface
       return $this->setData(self::DELETED, $deleted);
    }
 }
+

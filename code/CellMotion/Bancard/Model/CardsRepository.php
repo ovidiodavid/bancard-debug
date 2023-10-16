@@ -22,7 +22,7 @@ class CardsRepository implements CardsRepositoryInterface
         $this->cardsResourceModel->load($card, $id);
 
         if(!$card->getById()){
-            throw new NoSuchEntityException(__('La tarjeta no existe.'));
+            throw new NoSuchEntityException(__('La tarjeta no existe. %1', [$id]));
         }
         return $card;
     }
@@ -45,7 +45,6 @@ class CardsRepository implements CardsRepositoryInterface
         }catch(\Exception $exception){
             throw new CouldNotDeleteException(__($exception->getMessage()));
         }
-
         return true;
     }
 }

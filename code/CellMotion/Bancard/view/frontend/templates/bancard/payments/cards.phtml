@@ -1,3 +1,8 @@
+<?php
+/** @var Magento\Framework\View\Element\Template $block */
+/** @var CellMotion\Bancard\ViewModel\Cards $cardVm */
+$cardVm = $block->getData('cards_vm');
+?>
 <style>
     #iframe-container iframe{
         min-height: 500px;
@@ -11,7 +16,34 @@
     }
 </style>
 <div class="block block-addresses-default">
-    <div class="block-title"><strong><?= $block->escapeHtml(__('Tarjetas Registradas')) ?></strong></div>
+    <div class="block-title"><strong><?= $block->escapeHtml(__('Tarjetas Origen DB Magento')) ?></strong></div>
+    <div class="block-content">
+        <?php foreach($cardVm->getList() as $cellmotion_card): ?>
+            <div class="box box-address-billing">
+                <strong class="box-title">
+                    <span>id: <?= $cellmotion_card->getData('id') ?>. <?= $cellmotion_card->getData('card_alias') ?></span>
+                </strong>
+                <div class="box-content">
+                    <span>Número: </span>
+                    <span><?= $cellmotion_card->getData('card_number') ?></span><br>
+                    <span>Marca: </span>
+                    <span><?= $cellmotion_card->getData('card_brand') ?></span><br>
+                    <span>Vencimiento: </span>
+                    <span><?= $cellmotion_card->getData('card_expiration') ?></span><br>
+                    <span>Tipo: </span>
+                    <span><?= $cellmotion_card->getData('card_type') ?></span><br>
+                </div>
+                <div class="box-actions">
+                    <a class="action edit" href="#">
+                        <span><?= $block->escapeHtml(__('Editar')) ?></span>
+                    </a>
+                </div>
+            </div>
+        <?php endforeach ?>
+    </div>
+</div>
+<div class="block block-addresses-default">
+    <div class="block-title"><strong><?= $block->escapeHtml(__('Tarjetas Origen Bancard')) ?></strong></div>
     <div class="block-content">
         <?php foreach($this->getCards() as $card  ): ?>
             <div class="box box-address-billing">

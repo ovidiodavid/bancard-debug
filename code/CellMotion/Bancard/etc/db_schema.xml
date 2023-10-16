@@ -10,8 +10,8 @@
         <column xsi:type="varchar" name="card_expiration" nullable="false" length="16" comment="Card Expiration Date"/>
         <column xsi:type="varchar" name="card_type" nullable="false" length="16" comment="Card Type"/>
         <column xsi:type="varchar" name="card_alias" nullable="false" length="32" comment="Card Alias Name"/>
-        <column xsi:type="int" name="sort_order" nullable="false" length="2" comment="Order of sorting"/>
-        <column xsi:type="int" name="deleted" nullable="false" length="1" default="0" comment="Card has been deleted"/>
+        <column xsi:type="int" name="sort_order" nullable="false" comment="Order of sorting"/>
+        <column xsi:type="int" name="deleted" nullable="false" default="0" comment="Card has been deleted"/>
         <column xsi:type="timestamp" name="deleted_at" on_update="false" nullable="true" comment="Deleted At"/>
         <constraint xsi:type="primary" referenceId="PRIMARY">
             <column name="id"/>
